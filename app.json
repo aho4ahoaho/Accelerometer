@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "gyro-speed",
-    "slug": "gyro-speed",
+    "name": "Accelerometer",
+    "slug": "Accelerometer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
