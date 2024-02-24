@@ -1,6 +1,6 @@
 import { StyleSheet, Text, Button, View } from 'react-native';
 import { Accelerometer, type AccelerometerMeasurement, } from 'expo-sensors';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Subscription } from "expo-modules-core";
 
 const Gravity = 9.81;
@@ -38,7 +38,7 @@ export const AccelerometerView = () => {
             x: prev.x + dx,
             y: prev.y + dy
         }));
-    }, [subscription.current, interval, data]);
+    }, [subscription, interval, data]);
 
     const onStart = useCallback(() => {
         //AccelerometerMeasurementはg単位での加速度を表す
@@ -47,12 +47,12 @@ export const AccelerometerView = () => {
             subscription.current?.remove();
             subscription.current = null;
         }
-    }, [subscription.current, setRawData]);
+    }, [subscription, setRawData]);
 
     const onStop = useCallback(() => {
         subscription.current?.remove();
         subscription.current = null;
-    }, [subscription.current]);
+    }, [subscription]);
 
     const onReset = useCallback(() => {
         setVelocity({ x: 0, y: 0 });
